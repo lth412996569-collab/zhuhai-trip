@@ -11,6 +11,28 @@
 <style>
 :root{--o:#0a1628;--om:#1a3a5c;--c:#e8734a;--cl:#f5a080;--g:#d4a853;--gl:#f0d78c;--w:#fefefe;--t:#2c3e50;--tl:#5a6c7d;--s:0 4px 24px rgba(0,0,0,.12);--sl:0 12px 48px rgba(0,0,0,.18);--r:16px;--rs:10px;--tr:.35s cubic-bezier(.4,0,.2,1)}
 *{box-sizing:border-box;margin:0;padding:0}
+
+/* Trip Overview Dashboard */
+#overview{position:absolute;inset:0;z-index:5;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:6vh 4vw 2vh;overflow-y:auto}
+.ov-header{text-align:center;margin-bottom:3vh;width:100%}
+.ov-header h3{font-family:'Noto Serif SC',serif;font-size:clamp(18px,3vw,26px);color:var(--gl);margin-bottom:4px}
+.ov-header .ov-sub{font-size:13px;color:rgba(255,255,255,.4);letter-spacing:1px}
+.ov-stats{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-bottom:3vh}
+.ov-stat{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:var(--rs);padding:12px 20px;text-align:center;min-width:100px}
+.ov-stat .ov-num{font-size:24px;font-weight:700;color:var(--cl)}
+.ov-stat .ov-lbl{font-size:11px;color:rgba(255,255,255,.4);margin-top:2px}
+.ov-days{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px;width:100%;max-width:900px;margin-bottom:3vh}
+.ov-day{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:var(--rs);padding:14px 18px;cursor:pointer;transition:all var(--tr);display:flex;gap:14px;align-items:flex-start}
+.ov-day:hover{border-color:rgba(232,115,74,.4);box-shadow:0 4px 20px rgba(0,0,0,.3);transform:translateY(-2px);background:rgba(255,255,255,.06)}
+.ov-day-num{width:40px;height:40px;border-radius:50%;background:var(--c);color:white;font-size:16px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.ov-day-info{flex:1;min-width:0}
+.ov-day-info h4{font-size:14px;color:white;margin-bottom:4px;font-family:'Noto Serif SC',serif}
+.ov-day-info p{font-size:11px;color:rgba(255,255,255,.45);line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.ov-day-info .ov-tags{display:flex;gap:4px;flex-wrap:wrap;margin-top:6px}
+.ov-nav-btn{display:inline-flex;align-items:center;gap:8px;padding:12px 36px;border-radius:50px;border:1.5px solid var(--c);background:rgba(232,115,74,.1);color:var(--cl);font-size:15px;font-weight:600;cursor:pointer;transition:all var(--tr);margin-top:2vh;letter-spacing:1px;backdrop-filter:blur(4px)}
+.ov-nav-btn:hover{background:var(--c);color:white;box-shadow:0 0 32px rgba(232,115,74,.3)}
+#overview{display:none}
+#overview.on{display:flex}
 body{font-family:'Noto Sans SC',sans-serif;background:var(--o);color:var(--t);overflow:hidden;height:100vh;width:100vw}
 
 /* LANDING */
@@ -188,7 +210,73 @@ body{font-family:'Noto Sans SC',sans-serif;background:var(--o);color:var(--t);ov
 <div id="app" style="display:none">
   <button class="mt" id="musicBtn" onclick="toggleMusic()" title="背景音乐">🎵</button>
 
-  <div id="hub">
+  
+  <!-- ===== TRIP OVERVIEW DASHBOARD ===== -->
+  <div id="overview" class="on">
+    <div class="ov-header">
+      <h3>🗓️ 国庆6天 · 珠海亲子悠游</h3>
+      <div class="ov-sub">10.01 — 10.06 · 6人 · 4大2小</div>
+    </div>
+    <div class="ov-stats">
+      <div class="ov-stat"><div class="ov-num">¥6,700</div><div class="ov-lbl">人均预算</div></div>
+      <div class="ov-stat"><div class="ov-num">11</div><div class="ov-lbl">景点打卡</div></div>
+      <div class="ov-stat"><div class="ov-num">8</div><div class="ov-lbl">美食推荐</div></div>
+      <div class="ov-stat"><div class="ov-num">4</div><div class="ov-lbl">酒店/别墅</div></div>
+    </div>
+    <div class="ov-days">
+      <div class="ov-day" onclick="openPanel('transport')">
+        <div class="ov-day-num">D1</div>
+        <div class="ov-day-info">
+          <h4>10.1 抵达日 · 长隆初体验</h4>
+          <p>成都/杭州飞珠海 → 入住企鹅酒店 → 下午入园看鲸鲨 → 晚上烟花秀</p>
+          <div class="ov-tags"><span class="tg tr">✈️飞</span><span class="tg tb">🐧企鹅酒店</span><span class="tg ty">🎆烟花</span></div>
+        </div>
+      </div>
+      <div class="ov-day" onclick="openPanel('play')">
+        <div class="ov-day-num">D2</div>
+        <div class="ov-day-info">
+          <h4>10.2 海洋王国全日战 🔥</h4>
+          <p>8:30提前入园 → 鲸鲨馆→白鲸剧场→午休→海豚剧场→夜光巡游→烟花二刷</p>
+          <div class="ov-tags"><span class="tg tr">🐋长隆</span><span class="tg tb">🚀飞船酒店</span><span class="tg ty">🎢全日</span></div>
+        </div>
+      </div>
+      <div class="ov-day" onclick="openPanel('play')">
+        <div class="ov-day-num">D3</div>
+        <div class="ov-day-info">
+          <h4>10.3 飞船乐园 · 转场别墅</h4>
+          <p>上午飞船乐园→下午退房→入住唐家湾别墅→沙滩挖沙→晚上BBQ</p>
+          <div class="ov-tags"><span class="tg tr">🚀飞船</span><span class="tg tg2">🏡别墅</span><span class="tg ty">🍖BBQ</span></div>
+        </div>
+      </div>
+      <div class="ov-day" onclick="openPanel('play')">
+        <div class="ov-day-num">D4</div>
+        <div class="ov-day-info">
+          <h4>10.4 情侣路海岸线慢游</h4>
+          <p>爱情邮局→香炉湾沙滩→景山落日飞车→珠海渔女→日月贝日落</p>
+          <div class="ov-tags"><span class="tg tb">💌邮局</span><span class="tg tg2">🏖️沙滩</span><span class="tg ty">🐚日月贝</span></div>
+        </div>
+      </div>
+      <div class="ov-day" onclick="openPanel('food')">
+        <div class="ov-day-num">D5</div>
+        <div class="ov-day-info">
+          <h4>10.5 悠闲收官日</h4>
+          <p>自然醒→唐家古镇→博物馆→转场金湾→Orange Sea日落晚餐</p>
+          <div class="ov-tags"><span class="tg tg2">🏘️古镇</span><span class="tg tb">🏛️博物馆</span><span class="tg ty">🌅日落</span></div>
+        </div>
+      </div>
+      <div class="ov-day" onclick="openPanel('transport')">
+        <div class="ov-day-num">D6</div>
+        <div class="ov-day-info">
+          <h4>10.6 返程日</h4>
+          <p>自然醒→步行到金湾机场→各自飞回成都/杭州→假期结束✨</p>
+          <div class="ov-tags"><span class="tg tr">✈️返程</span></div>
+        </div>
+      </div>
+    </div>
+    <button class="ov-nav-btn" onclick="showCompass()">🧭 打开导航中枢</button>
+  </div>
+
+  <div id="hub" style="display:none">
     <div class="hbb"></div>
     <div class="hbc">
       <div class="hbr"></div><div class="hbr"></div><div class="hbr"></div>
@@ -337,6 +425,8 @@ let activePanel=null,mapsInit={food:false,play:false},foodMap=null,playMap=null,
 let currentSidecard=null;
 
 function enterApp(){document.getElementById('landing').classList.add('hidden');document.getElementById('app').style.display='block'}
+function showCompass(){document.getElementById('overview').classList.remove('on');document.getElementById('hub').style.display='flex'}
+function showOverview(){document.getElementById('hub').style.display='none';document.getElementById('overview').classList.add('on');closeAll()}
 
 function toggleMusic(){
   const btn=document.getElementById('musicBtn');
@@ -426,7 +516,7 @@ function sidecardContent(id){
       <tr><td>💡 技巧</td><td>设价格提醒 · 周二下午2点刷 · 越早越便宜</td></tr>
       <tr><td>🛄 行李</td><td>经济舱20kg托运 + 7kg手提</td></tr>
     </table>
-    <a href="https://flights.ctrip.com/itinerary/oneway/ctu-zuh?date=2026-10-01" target="_blank" style="display:block;text-align:center;padding:12px;margin:12px 0;background:var(--c);color:white;border-radius:var(--rs);text-decoration:none;font-weight:600;font-size:14px">🛫 去携程查成都→珠海实时票价 →</a>
+    <a href="https://flights.ctrip.com/booking/CTU-ZUH-day-1.html" target="_blank" style="display:block;text-align:center;padding:12px;margin:12px 0;background:var(--c);color:white;border-radius:var(--rs);text-decoration:none;font-weight:600;font-size:14px">🛫 去携程查成都→珠海实时票价 →</a>
     <div class="hlb"><div class="hlb-title">⚠️ 重要</div><div class="hlb-text">杭州过来的小伙伴也尽量选相近落地时间的航班，落地差距控制在30分钟内，方便一起打车去酒店。</div></div>`;
 
   if(c==='flight-chengdu-gz')return `
@@ -440,7 +530,7 @@ function sidecardContent(id){
     <div class="route-step"><div class="route-num">2</div><div class="route-info"><h5>🚇 白云机场 → 广州南站</h5><p>地铁3号线到嘉禾望岗 → 换2号线到广州南 · 约1h · ¥10</p></div></div>
     <div class="route-step"><div class="route-num">3</div><div class="route-info"><h5>🚄 广州南 → 珠海站</h5><p>广珠城际 · 约1h · ¥70/人 · <span class="tg tr">9月16日早8:00 12306开抢！</span></p></div></div>
     <div class="hlb"><div class="hlb-title">💰 省钱对比</div><div class="hlb-text">直飞 ¥1,800 vs 飞广州+高铁 ¥1,070 = <strong>每人省 ¥730</strong>。6人合计省 ¥4,380。多花2小时，值不值你判断。</div></div>
-    <a href="https://flights.ctrip.com/itinerary/oneway/ctu-can?date=2026-10-01" target="_blank" style="display:block;text-align:center;padding:12px;margin:12px 0;background:var(--c);color:white;border-radius:var(--rs);text-decoration:none;font-weight:600;font-size:14px">🛫 去携程查成都→广州实时票价 →</a>
+    <a href="https://flights.ctrip.com/booking/CTU-CAN-day-1.html" target="_blank" style="display:block;text-align:center;padding:12px;margin:12px 0;background:var(--c);color:white;border-radius:var(--rs);text-decoration:none;font-weight:600;font-size:14px">🛫 去携程查成都→广州实时票价 →</a>
     <a href="https://www.12306.cn/" target="_blank" style="display:block;text-align:center;padding:12px;margin:8px 0;background:rgba(255,255,255,.08);color:var(--gl);border-radius:var(--rs);text-decoration:none;font-weight:600;font-size:14px;border:1px solid rgba(255,255,255,.1)">🚄 去12306抢广珠城际高铁票 →</a>`;
 
   if(c==='flight-hangzhou')return `
@@ -456,7 +546,7 @@ function sidecardContent(id){
       <tr><td>💡 省钱</td><td>10月2日出发比10月1日便宜 ~30%</td></tr>
       <tr><td>📱 订票</td><td>携程/飞猪/去哪儿 · 8月15日开订</td></tr>
     </table>
-    <a href="https://flights.ctrip.com/itinerary/oneway/hgh-zuh?date=2026-10-01" target="_blank" style="display:block;text-align:center;padding:12px;margin:12px 0;background:var(--c);color:white;border-radius:var(--rs);text-decoration:none;font-weight:600;font-size:14px">🛫 去携程查杭州→珠海实时票价 →</a>
+    <a href="https://flights.ctrip.com/booking/HGH-ZUH-day-1.html" target="_blank" style="display:block;text-align:center;padding:12px;margin:12px 0;background:var(--c);color:white;border-radius:var(--rs);text-decoration:none;font-weight:600;font-size:14px">🛫 去携程查杭州→珠海实时票价 →</a>
     <div class="hlb"><div class="hlb-title">💡 建议</div><div class="hlb-text">杭州飞珠海航班比成都多，价格也便宜。和成都小伙伴协调好落地时间，差距控制在30分钟内。</div></div>`;
 
   // === HOTELS ===
