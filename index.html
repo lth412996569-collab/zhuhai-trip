@@ -192,7 +192,7 @@ body{font-family:'Noto Sans SC',sans-serif;background:var(--o);color:var(--t);ov
     <div class="hbb"></div>
     <div class="hbc">
       <div class="hbr"></div><div class="hbr"></div><div class="hbr"></div>
-      <div class="hcc"><span class="i">🧭</span><span class="l" style="cursor:pointer;font-size:11px" onclick="showOverview()">← 返回总览</span></div>
+      <div class="hcc"><span class="i" style="cursor:pointer" onclick="event.stopPropagation();showOverview()" title="返回总览">🧭</span><span class="l">导航中枢</span></div>
       <button class="nb tr" onclick="openPanel('transport')">✈️<span class="nl">交通</span></button>
       <button class="nb ac" onclick="openPanel('accommodation')">🏨<span class="nl">住宿</span></button>
       <button class="nb fd" onclick="openPanel('food')">🍜<span class="nl">饮食</span></button>
@@ -370,7 +370,6 @@ function closeAll(){
   document.getElementById('panelOverlay').classList.remove('on');
   if(activePanel){document.getElementById('panel-'+activePanel).classList.remove('on');activePanel=null}
   closeSidecard();
-  showOverview();
 }
 
 function openSidecard(id){
