@@ -401,7 +401,7 @@ function toggleMusic(){
 }
 
 function openPanel(type){
-  closeAll();
+  closePanels();
   document.getElementById('panelOverlay').classList.add('on');
   const p=document.getElementById('panel-'+type);p.classList.add('on');activePanel=type;
   if(type==='food'&&!mapsInit.food){initFoodMap();mapsInit.food=true}
@@ -409,10 +409,13 @@ function openPanel(type){
   setTimeout(()=>{if(type==='food'&&foodMap)foodMap.invalidateSize();if(type==='play'&&playMap)playMap.invalidateSize()},200);
 }
 
-function closeAll(){
+function closePanels(){
   document.getElementById('panelOverlay').classList.remove('on');
   if(activePanel){document.getElementById('panel-'+activePanel).classList.remove('on');activePanel=null}
   closeSidecard();
+}
+function closeAll(){
+  closePanels();
   showOverview();
 }
 
