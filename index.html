@@ -13,7 +13,7 @@
 *{box-sizing:border-box;margin:0;padding:0}
 
 /* Trip Overview Dashboard */
-#overview{position:absolute;inset:0;z-index:5;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:6vh 4vw 2vh;overflow-y:auto;background:var(--o)}
+#overview{position:absolute;inset:0;z-index:5;display:none;flex-direction:column;align-items:center;justify-content:flex-start;padding:6vh 4vw 2vh;overflow-y:auto;background:var(--o)}
 #overview.on{display:flex}
 .ov-header{text-align:center;margin-bottom:3vh;width:100%}
 .ov-header h3{font-family:"Noto Serif SC",serif;font-size:clamp(18px,3vw,26px);color:var(--gl);margin-bottom:4px}
@@ -182,12 +182,50 @@ body{font-family:'Noto Sans SC',sans-serif;background:var(--o);color:var(--t);ov
 .route-info p{font-size:11px;color:rgba(255,255,255,.45);line-height:1.5}
 
 @media(max-width:768px){
-  .nb{width:72px;height:72px;font-size:22px}.nb .nl{font-size:10px}
-  .nb.tr{top:-42px}.nb.ac{right:-42px}.nb.fd{bottom:-42px}.nb.pl{left:-42px}
-  .hcc{width:85px;height:85px}.hcc .i{font-size:26px}.hcc .l{font-size:10px}
+  /* Landing */
+  .landing-title{font-size:28px!important}.landing-subtitle{font-size:13px!important}
+  .landing-btn{padding:14px 36px;font-size:16px}.landing-badge{font-size:12px;letter-spacing:2px}
+  .flower{font-size:18px!important}
+  /* Hub compass */
+  .nb{width:64px;height:64px;font-size:20px;backdrop-filter:blur(12px)}
+  .nb .nl{font-size:9px}.nb.tr{top:-36px}.nb.ac{right:-36px}.nb.fd{bottom:-36px}.nb.pl{left:-36px}
+  .hcc{width:72px;height:72px}.hcc .i{font-size:22px}.hcc .l{font-size:9px}
+  .hbr:nth-child(2){width:60%;height:60%}.hbr:nth-child(3){width:35%;height:35%}
+  /* Overview */
+  #overview{padding:4vh 3vw 2vh}
+  .ov-stats{gap:8px}.ov-stat{padding:10px 14px;min-width:70px}
+  .ov-stat .ov-num{font-size:20px}.ov-stat .ov-lbl{font-size:10px}
+  .ov-days{grid-template-columns:1fr;gap:8px;max-width:100%}
+  .ov-day{padding:12px 14px;gap:10px}
+  .ov-day-num{width:34px;height:34px;font-size:14px}
+  .ov-day-info h4{font-size:13px}.ov-day-info p{font-size:10px;-webkit-line-clamp:1}
+  .ov-tags .tg{font-size:9px;padding:1px 6px}
+  .ov-nav-btn{padding:10px 28px;font-size:14px}
+  /* Panels */
+  .dp{max-width:100vw!important;max-height:96vh!important;border-radius:12px 12px 0 0!important}
+  .dpf{top:3vh!important;left:1vw!important;right:1vw!important;bottom:1vh!important}
+  .dpc.on{transform:translate(-50%,-50%) scale(1)!important}
+  .ph{padding:10px 14px}.ph h2{font-size:15px}.pb{padding:12px 14px}
   .cgrid{grid-template-columns:1fr}.frow{flex-direction:column}
-  .dp{max-width:98vw;max-height:92vh}
-  .sidecard{width:100vw;right:-100vw}
+  .crd-img{height:110px;font-size:36px}.crd-body h4{font-size:14px}
+  .crd-price{font-size:15px}
+  /* Sidecard */
+  .sidecard{width:100vw!important;right:-100vw!important}
+  .sch{padding:12px 14px}.sch h3{font-size:15px}.scb{padding:12px 14px}
+  /* Maps */
+  .mw .mi{height:300px}
+  /* Tables */
+  .itbl td{font-size:11px;padding:4px 6px}.itbl td:first-child{width:65px}
+  .flight-card{padding:12px}.fc-city{font-size:15px}.fc-route{font-size:18px}
+  .route-step{gap:8px;padding:8px 0}
+  .route-num{width:24px;height:24px;font-size:11px}
+  .section-title,.st{font-size:14px}
+  /* Music toggle */
+  .mt{top:10px;right:10px;width:36px;height:36px;font-size:16px}
+  /* Better touch targets */
+  .nb,.ov-day,.crd,.px,.nav-btn,.landing-btn,button{touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+  /* Prevent text selection on buttons */
+  .nb,.ov-day,.crd,.ov-nav-btn,.nav-btn{-webkit-user-select:none;user-select:none}
 }
 </style>
 </head>
