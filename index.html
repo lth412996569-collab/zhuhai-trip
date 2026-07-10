@@ -255,7 +255,11 @@ body{font-family:'Noto Sans SC',sans-serif;background:var(--o);color:var(--t);ov
     <div class="lbd">ZHUHAI · 2026</div>
     <h1 class="ltt">三朵金花旅行团</h1>
     <p class="lst">珠海国庆亲子悠游 · 10.01 — 10.06</p>
-    <button class="lbt" onclick="enterApp()">✨ 开启旅程</button>
+    <div style="display:flex;gap:20px;flex-wrap:wrap;justify-content:center;margin-top:20px">
+      <button class="lbt" onclick="enterPlan('zhuhai')" style="animation:a1 .8s .45s ease both">🐋 计划A · 珠海</button>
+      <button class="lbt" onclick="enterPlan('sanya')" style="animation:a1 .8s .6s ease both;border-color:var(--g)">🌴 计划B · 三亚</button>
+    </div>
+    <div style="font-size:12px;color:rgba(255,255,255,.3);margin-top:12px;animation:a1 .8s .75s ease both">点击选择出行计划</div>
   </div>
 </div>
 
@@ -264,7 +268,7 @@ body{font-family:'Noto Sans SC',sans-serif;background:var(--o);color:var(--t);ov
   <button class="mt" id="musicBtn" onclick="toggleMusic()" title="背景音乐">🎵</button>
 
   
-  <div id="overview" class="on">
+  <div id="overview" class="on"><div id="ov-zhuhai" style="display:flex;flex-direction:column;align-items:center;width:100%">
     <div class="ov-header"><h3>🗓️ 国庆6天 · 珠海亲子悠游</h3><div class="ov-sub">✈️ 航空家庭Day3加入 · 10.01 — 10.06 · 4人→6人 · 航空家庭Day3汇合</div></div>
     <div class="ov-stats">
       <div class="ov-stat"><div class="ov-num">¥6,700</div><div class="ov-lbl">人均预算(6人)</div></div>
@@ -281,7 +285,46 @@ body{font-family:'Noto Sans SC',sans-serif;background:var(--o);color:var(--t);ov
       <div class="ov-day" onclick="openPanel('transport')"><div class="ov-day-num">D6</div><div class="ov-day-info"><h4>10.6 返程日</h4><p>自然醒→金湾机场→飞回成都/杭州 ✨</p><div class="ov-tags"><span class="tg tr">✈️返程</span></div></div></div>
     </div>
     <button class="ov-nav-btn" onclick="showCompass()">🧭 打开导航中枢</button>
+    <button class="ov-nav-btn" onclick="switchPlan('sanya')" style="margin:1vh 4px;border-color:var(--g)">🌴 切换到计划B · 三亚</button>
   </div>
+  </div>
+  <!-- ===== SANYA OVERVIEW ===== -->
+  <div id="ov-sanya" style="display:none;flex-direction:column;align-items:center;padding:6vh 4vw 2vh;width:100%;overflow-y:auto">
+    <div class="ov-header"><h3>🌴 三亚 · 国庆6天五星躺平</h3><div class="ov-sub">10.01 — 10.06 · 6人 · 中途加入无影响</div></div>
+    <div class="ov-stats">
+      <div class="ov-stat"><div class="ov-num">¥8,500</div><div class="ov-lbl">人均预算</div></div>
+      <div class="ov-stat"><div class="ov-num">1</div><div class="ov-lbl">酒店不挪窝</div></div>
+      <div class="ov-stat"><div class="ov-num">✈️</div><div class="ov-lbl">机票比珠海便宜</div></div>
+      <div class="ov-stat"><div class="ov-num">🏖️</div><div class="ov-lbl">全程五星度假</div></div>
+    </div>
+    <div class="ov-days">
+      <div class="ov-day"><div class="ov-day-num">D1</div><div class="ov-day-info"><h4>10.1 抵达三亚 · 酒店初体验</h4><p>先遣队4人 · 成都/杭州飞三亚 → 入住五星度假酒店 → 泳池/沙滩放松</p><div class="ov-tags"><span class="tg tr">✈️飞</span><span class="tg tb">🏨入住</span><span class="tg ty">🏊泳池</span></div></div></div>
+      <div class="ov-day"><div class="ov-day-num">D2</div><div class="ov-day-info"><h4>10.2 亚龙湾沙滩日 🔥</h4><p>先遣队4人 · 酒店早餐→亚龙湾挖沙戏水→椰梦长廊日落→海鲜晚餐</p><div class="ov-tags"><span class="tg tr">🏖️沙滩</span><span class="tg tb">🌅日落</span><span class="tg ty">🦞海鲜</span></div></div></div>
+      <div class="ov-day"><div class="ov-day-num">D3</div><div class="ov-day-info"><h4>10.3 全员集结 · 水世界狂欢 🔥</h4><p>航空家庭抵达 → 全员6人 → 亚特兰蒂斯水世界 → C秀表演</p><div class="ov-tags"><span class="tg tr">🎢水世界</span><span class="tg tg2">👨‍👩‍👧‍👦全员</span><span class="tg ty">🎭C秀</span></div></div></div>
+      <div class="ov-day"><div class="ov-day-num">D4</div><div class="ov-day-info"><h4>10.4 热带雨林 · 免税店</h4><p>全员6人 · 热带天堂森林公园→过江龙索桥→免税城购物→酒店泳池</p><div class="ov-tags"><span class="tg tb">🌴雨林</span><span class="tg tg2">🛍️免税</span><span class="tg ty">🏊泳池</span></div></div></div>
+      <div class="ov-day"><div class="ov-day-num">D5</div><div class="ov-day-info"><h4>10.5 蜈支洲岛 · 玻璃海</h4><p>全员6人 · 蜈支洲岛一日→浮潜→环岛电瓶车→三亚千古情</p><div class="ov-tags"><span class="tg tr">🏝️海岛</span><span class="tg tb">🤿浮潜</span><span class="tg ty">🎭演出</span></div></div></div>
+      <div class="ov-day"><div class="ov-day-num">D6</div><div class="ov-day-info"><h4>10.6 返程日</h4><p>酒店早餐→最后泳池时光→飞回成都/杭州 ✨</p><div class="ov-tags"><span class="tg tr">✈️返程</span></div></div></div>
+    </div>
+    <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:var(--rs);padding:16px;max-width:900px;width:100%;margin:1vh 0">
+      <h4 style="color:var(--cl);margin-bottom:8px;font-family:'Noto Serif SC',serif">🏨 酒店推荐（三选一，全程不挪窝）</h4>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:10px">
+        <div style="background:rgba(255,255,255,.03);padding:10px;border-radius:8px"><strong style="color:white">🌊 亚龙湾天域度假酒店</strong><br><span style="font-size:11px;color:rgba(255,255,255,.5)">亲子天花板 · 一线海景 · 绿荫覆盖<br>国庆预估 ¥1,500-2,500/晚 · 亚龙湾C位</span></div>
+        <div style="background:rgba(255,255,255,.03);padding:10px;border-radius:8px"><strong style="color:white">🐬 海棠湾仁恒皇冠假日</strong><br><span style="font-size:11px;color:rgba(255,255,255,.5)">IHG旗舰 · 顶级亲子设施 · 儿童俱乐部<br>国庆预估 ¥2,000-3,500/晚 · 海棠湾</span></div>
+        <div style="background:rgba(255,255,255,.03);padding:10px;border-radius:8px"><strong style="color:white">🎢 亚特兰蒂斯</strong><br><span style="font-size:11px;color:rgba(255,255,255,.5)">含水世界+水族馆 · 一站式度假<br>国庆预估 ¥2,500-5,000/晚 · 海棠湾C位</span></div>
+      </div>
+    </div>
+    <div style="background:rgba(232,115,74,.08);border:1px solid rgba(232,115,74,.15);border-radius:var(--rs);padding:14px;max-width:900px;width:100%;margin:1vh 0">
+      <strong style="color:var(--cl);font-size:14px">🆚 珠海 vs 三亚</strong>
+      <div style="font-size:11px;color:rgba(255,255,255,.6);line-height:1.8;margin-top:6px">
+        ✅ 三亚优势：五星酒店一站到底 · 中途加入无影响 · 机票更便宜 · 不用换酒店<br>
+        ⚠️ 三亚劣势：国庆酒店溢价更高 · 10月水温偏凉 · 没有长隆乐园<br>
+        ✅ 珠海优势：长隆4.9分亲子天花板 · 酒店选择灵活 · 市区别墅性价比高<br>
+        ⚠️ 珠海劣势：换3次酒店折腾 · 国庆情侣路拥堵 · 中途加入需协调
+      </div>
+    </div>
+    <button class="ov-nav-btn" onclick="switchPlan('zhuhai')" style="margin:1vh 4px;border-color:var(--g)">🐋 切换到计划A · 珠海</button>
+  </div>
+
 
   <div id="hub">
     <div class="hbb"></div>
@@ -431,9 +474,24 @@ body{font-family:'Noto Sans SC',sans-serif;background:var(--o);color:var(--t);ov
 let activePanel=null,mapsInit={food:false,play:false},foodMap=null,playMap=null,audioCtx=null,musicPlaying=false;
 let currentSidecard=null;
 
-function enterApp(){document.getElementById('landing').classList.add('hidden');document.getElementById('app').style.display='block'}
+let currentPlan='zhuhai';
+function enterPlan(plan){
+  currentPlan=plan;
+  document.getElementById('landing').classList.add('hidden');
+  document.getElementById('app').style.display='block';
+  document.getElementById('overview').classList.add('on');
+  document.getElementById('overview').style.display='flex';
+  if(plan==='sanya'){
+    document.getElementById('ov-zhuhai').style.display='none';
+    document.getElementById('ov-sanya').style.display='flex';
+  }else{
+    document.getElementById('ov-zhuhai').style.display='flex';
+    document.getElementById('ov-sanya').style.display='none';
+  }
+}
 function showCompass(){document.getElementById('overview').classList.remove('on');document.getElementById('hub').style.display='flex'}
-function showOverview(){document.getElementById('hub').style.display='none';document.getElementById('overview').classList.add('on');closeAll()}
+function showOverview(){document.getElementById('hub').style.display='none';document.getElementById('overview').classList.add('on');document.getElementById('overview').style.display='flex';closeAll()}
+function switchPlan(plan){enterPlan(plan)}
 
 function toggleMusic(){
   const btn=document.getElementById('musicBtn');
