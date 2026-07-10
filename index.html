@@ -308,7 +308,7 @@ body{font-family:'Noto Sans SC',sans-serif;background:var(--o);color:var(--t);ov
   </div>
   <!-- ===== SANYA OVERVIEW ===== -->
   <div id="ov-sanya" style="display:none;flex-direction:column;align-items:center;padding:6vh 4vw 2vh;width:100%;overflow-y:auto">
-    <div class="ov-header"><h3>🌴 三亚 · 国庆6天五星躺平</h3><div class="ov-sub">10.01 — 10.06 · 6人 · 中途加入无影响</div></div>
+    <div class="ov-header"><h3>🌴 三亚 · 国庆6天五星躺平</h3><div class="ov-sub">10.01 — 10.06 · 💡 或错峰9.25(中秋)+年假=更长假期省钱 · 6人 · 中途加入无影响</div></div>
     <div class="ov-stats">
       <div class="ov-stat"><div class="ov-num">¥8,500</div><div class="ov-lbl">人均预算</div></div>
       <div class="ov-stat"><div class="ov-num">1</div><div class="ov-lbl">酒店不挪窝</div></div>
@@ -326,8 +326,8 @@ body{font-family:'Noto Sans SC',sans-serif;background:var(--o);color:var(--t);ov
     <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:var(--rs);padding:16px;max-width:900px;width:100%;margin:1vh 0">
       <h4 style="color:var(--cl);margin-bottom:8px;font-family:'Noto Serif SC',serif">🏨 酒店推荐（三选一，全程不挪窝）</h4>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:10px">
-        <div style="background:rgba(255,255,255,.03);padding:10px;border-radius:8px"><strong style="color:white">🌊 亚龙湾天域度假酒店</strong><br><span style="font-size:11px;color:rgba(255,255,255,.5)">亲子天花板 · 一线海景 · 绿荫覆盖<br>国庆预估 ¥1,500-2,500/晚 · 亚龙湾C位</span></div>
-        <div style="background:rgba(255,255,255,.03);padding:10px;border-radius:8px"><strong style="color:white">🐬 海棠湾仁恒皇冠假日</strong><br><span style="font-size:11px;color:rgba(255,255,255,.5)">IHG旗舰 · 顶级亲子设施 · 儿童俱乐部<br>国庆预估 ¥2,000-3,500/晚 · 海棠湾</span></div>
+        <div style="background:rgba(255,255,255,.03);padding:10px;border-radius:8px"><strong style="color:white">🌊 海棠湾洲际</strong><br><span style="font-size:11px;color:rgba(255,255,255,.5)">自家沙滩 · 亲子乐园 · 离免税店近<br>国庆预估 ¥2,000-3,000/晚 · 海棠湾C位 · 🔥推荐</span></div>
+        <div style="background:rgba(255,255,255,.03);padding:10px;border-radius:8px"><strong style="color:white">🌟 海棠湾万豪</strong><br><span style="font-size:11px;color:rgba(255,255,255,.5)">别墅区可选 · 私家沙滩 · 亲子餐食<br>国庆预估 ¥2,000-3,000/晚 · 海棠湾</span></div>
         <div style="background:rgba(255,255,255,.03);padding:10px;border-radius:8px"><strong style="color:white">🎢 亚特兰蒂斯</strong><br><span style="font-size:11px;color:rgba(255,255,255,.5)">含水世界+水族馆 · 一站式度假<br>国庆预估 ¥2,500-5,000/晚 · 海棠湾C位</span></div>
       </div>
     </div>
@@ -335,7 +335,7 @@ body{font-family:'Noto Sans SC',sans-serif;background:var(--o);color:var(--t);ov
       <strong style="color:var(--cl);font-size:14px">🆚 珠海 vs 三亚</strong>
       <div style="font-size:11px;color:rgba(255,255,255,.6);line-height:1.8;margin-top:6px">
         ✅ 三亚优势：五星酒店一站到底 · 中途加入无影响 · 机票更便宜 · 不用换酒店<br>
-        ⚠️ 三亚劣势：国庆酒店溢价更高 · 10月水温偏凉 · 没有长隆乐园<br>
+        ⚠️ 三亚劣势：国庆酒店溢价更高 · 仁恒皇冠差评多已pass · 三正月太偏pass · 10月水温偏凉 · 没有长隆乐园<br>
         ✅ 珠海优势：长隆4.9分亲子天花板 · 酒店选择灵活 · 市区别墅性价比高<br>
         ⚠️ 珠海劣势：换3次酒店折腾 · 国庆情侣路拥堵 · 中途加入需协调
       </div>
@@ -888,7 +888,7 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')closeAll()});
         <table style="width:100%;border-collapse:collapse;font-size:13px">
           <tr><th style="background:var(--ocean-mid);color:white;padding:10px;text-align:left;width:120px">对比项目</th><th style="background:#1a3a5c;color:var(--cl);padding:10px;text-align:left">🐋 珠海（计划A）</th><th style="background:#2d5016;color:var(--gl);padding:10px;text-align:left">🌴 三亚（计划B）</th></tr>
           <tr onclick="editCell(this)"><td style="padding:10px;border-bottom:1px solid rgba(255,255,255,.06);color:rgba(255,255,255,.5)">🛫 机票预估</td><td class="editable" data-key="zhuhai-flight" contenteditable="true" style="padding:10px;border-bottom:1px solid rgba(255,255,255,.06);color:white;min-width:200px">成都¥1,200+杭州¥800 /人</td><td class="editable" data-key="sanya-flight" contenteditable="true" style="padding:10px;border-bottom:1px solid rgba(255,255,255,.06);color:white;min-width:200px">成都¥600+杭州¥500 /人</td></tr>
-          <tr><td style="padding:10px;border-bottom:1px solid rgba(255,255,255,.06);color:rgba(255,255,255,.5)">🏨 酒店总费用</td><td class="editable" data-key="zhuhai-hotel" contenteditable="true" style="padding:10px;border-bottom:1px solid rgba(255,255,255,.06);color:white">¥19,400（4晚不同类型）</td><td class="editable" data-key="sanya-hotel" contenteditable="true" style="padding:10px;border-bottom:1px solid rgba(255,255,255,.06);color:white">¥15,000-25,000（5晚五星）</td></tr>
+          <tr><td style="padding:10px;border-bottom:1px solid rgba(255,255,255,.06);color:rgba(255,255,255,.5)">🏨 酒店总费用</td><td class="editable" data-key="zhuhai-hotel" contenteditable="true" style="padding:10px;border-bottom:1px solid rgba(255,255,255,.06);color:white">¥19,400（4晚不同类型）</td><td class="editable" data-key="sanya-hotel" contenteditable="true" style="padding:10px;border-bottom:1px solid rgba(255,255,255,.06);color:white">¥15,000-30,000（洲际/万豪/亚特 5晚）</td></tr>
           <tr><td style="padding:10px;border-bottom:1px solid rgba(255,255,255,.06);color:rgba(255,255,255,.5)">🎫 门票/活动</td><td class="editable" data-key="zhuhai-tickets" contenteditable="true" style="padding:10px;border-bottom:1px solid rgba(255,255,255,.06);color:white">¥7,070（长隆+景点）</td><td class="editable" data-key="sanya-tickets" contenteditable="true" style="padding:10px;border-bottom:1px solid rgba(255,255,255,.06);color:white">¥3,000（含水世界+海岛）</td></tr>
           <tr><td style="padding:10px;border-bottom:1px solid rgba(255,255,255,.06);color:rgba(255,255,255,.5)">🍽️ 餐饮预估</td><td class="editable" data-key="zhuhai-food" contenteditable="true" style="padding:10px;border-bottom:1px solid rgba(255,255,255,.06);color:white">¥6,000（海鲜+自助）</td><td class="editable" data-key="sanya-food" contenteditable="true" style="padding:10px;border-bottom:1px solid rgba(255,255,255,.06);color:white">¥8,000（度假区消费高）</td></tr>
           <tr><td style="padding:10px;border-bottom:1px solid rgba(255,255,255,.06);color:rgba(255,255,255,.5)">🚕 当地交通</td><td class="editable" data-key="zhuhai-transport" contenteditable="true" style="padding:10px;border-bottom:1px solid rgba(255,255,255,.06);color:white">¥1,000（打车为主）</td><td class="editable" data-key="sanya-transport" contenteditable="true" style="padding:10px;border-bottom:1px solid rgba(255,255,255,.06);color:white">¥1,200（租车/打车）</td></tr>
